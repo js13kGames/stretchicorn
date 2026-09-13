@@ -14,7 +14,7 @@ Built for **js13kGames 2026 · Unicorns & Rainbows**.
 
 [**Download the standalone HTML**](dist/stretchicorn-local.html) · [**Download the js13k submission ZIP**](dist/stretchicorn-js13k.zip) · [**Read the release process**](RELEASING.md)
 
-**v0.39.0 submission candidate · 13 trials · 5 regular enemy archetypes · 3 authored bosses · 4 difficulties · Impossible Encore · 13,312 / 13,312 bytes**
+**v0.39.0 submission candidate · 13 trials · 5 regular enemy archetypes · 3 authored bosses · 4 difficulties · Impossible Encore · 13,304 / 13,312 bytes**
 
 </div>
 
@@ -75,9 +75,9 @@ Every visible menu action is also clickable. The title, pause screen, Field Guid
 
 ### Laptop-safe pointer controls
 
-The Controls screen centers the persistent **MOUSE ON/OFF** and **MUSIC ON/OFF** actions above the control legend, with **BACK** centered at the bottom.
+The Controls screen centers persistent **MOUSE ON/OFF**, **MUSIC ON/OFF**, and **SFX ON/OFF** actions above the control legend, with **BACK** centered at the bottom.
 
-When pointer gameplay is OFF, mouse movement cannot disturb horn aim and accidental clicks cannot Snap. Arrow Keys and Space remain authoritative, UI clicks still work, and stale pointer state is cleared before re-enabling. The preference is stored locally.
+When pointer gameplay is OFF, mouse movement cannot disturb horn aim and accidental clicks cannot Snap. Arrow Keys and Space remain authoritative, UI clicks still work, and stale pointer state is cleared before re-enabling. All three preferences are stored locally.
 
 ---
 
@@ -484,11 +484,11 @@ Stretchicorn is not a tech demo wrapped around one mechanic. The competition bui
 | **Scoring** | Style, combo multiplier, precision returns, per-difficulty Best, Impossible 3× run-end premium |
 | **Visuals** | fully procedural characters, corn, bosses, VFX, hay, terrain, UI and rainbow sky |
 | **Audio** | procedural Web Audio music, bass, percussion, chimes and combat feedback |
-| **Persistence** | per-difficulty Best + pointer preference through guarded localStorage |
+| **Persistence** | per-difficulty Best + Mouse/Music/SFX preferences through guarded localStorage |
 | **Reliability** | deterministic packaging, VM regressions, offline checks, Chromium/Firefox/WebKit smoke |
 | **External runtime assets** | **0** |
 
-The shipping ZIP uses **100.000% of the 13,312 byte limit**. There are **0 bytes free**.
+The shipping ZIP uses **13,304 of 13,312 bytes**. There are **8 bytes free**.
 
 ---
 
@@ -643,9 +643,9 @@ The current competition artifact is:
 ```text
 dist/stretchicorn-js13k.zip
 dist/stretchicorn-desktop-v0.39.0.zip
-13,312 / 13,312 bytes
-0 bytes free
-SHA-256 71e64ddfedfb25a8e30db9f8886b25a4cd27255b81277ddf83e0c6c77e28ac12
+13,304 / 13,312 bytes
+8 bytes free
+SHA-256 b88f8b1429b6f53330f9fb871760caf1acca2e5fafe2a8251f517feea7df0405
 ```
 
 The stable and versioned ZIPs are byte-identical and contain exactly one file at archive root:
@@ -684,13 +684,13 @@ Extreme byte golf makes regressions unusually easy to introduce, so the reposito
 
 The canonical `npm run release:competition` path covers:
 
-- legacy settings migration and persistent pointer preference,
+- legacy settings migration plus persistent Mouse/Music/SFX preferences,
 - pointer OFF authority while preserving Arrow + Space,
 - independently centered title actions with no separator dot,
 - number-free title difficulty cards with retired **1–4** title shortcuts,
 - boxed title/pause/Guide/Controls/Game Over/result click authority,
 - **G** Field Guide shortcut plus exact return-to-origin behavior,
-- explicit Controls mouse and music toggles plus inert empty-space clicks,
+- explicit Controls Mouse, Music and SFX toggles plus inert empty-space clicks,
 - deterministic multi-difficulty/boss soak with finite-state and entity-count bounds,
 - Easy Morning Stretch progression,
 - the complete 13-trial naming contract,
@@ -731,6 +731,7 @@ scripts/
   build.mjs              source composition + readable regression builder
   pack-competition.mjs   deterministic packer + exact local-payload writer
   package.py             deterministic Zopfli ZIP writer
+  test-audio-controls.mjs Music/SFX/Mouse persistence + legacy migration
   test-v044.mjs          storage/input + multi-difficulty soak audit
   test-v043.mjs          boxed menu click authority + pointer input
   test-v042.mjs          rainbow-popcorn finale + Style semantics

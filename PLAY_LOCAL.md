@@ -15,7 +15,7 @@ The title screen lets you:
 - click **Easy / Normal / Hard / Impossible**,
 - press Space / Enter to begin Easy,
 - press `G` or click **Field Guide** for the complete combat vocabulary,
-- press `C` or click **Controls** to change pointer or music behavior.
+- press `C` or click **Controls** to change pointer or audio behavior.
 
 Easy begins with **FIRST FLIGHT** inside Trial 1. Five practice targets appear one at a time and must be defeated with genuine charged Rainbow Snaps before the campaign advances to Trial 2.
 
@@ -35,11 +35,11 @@ Pause, Field Guide, Controls, Game Over and result actions are also presented as
 
 ### Laptop-safe mode
 
-The Controls screen centers **MOUSE ON/OFF** and **MUSIC ON/OFF** above the control legend and centers **BACK** at the bottom.
+The Controls screen centers **MOUSE ON/OFF**, **MUSIC ON/OFF**, and **SFX ON/OFF** above the control legend and centers **BACK** at the bottom.
 
 Turning mouse gameplay OFF prevents touchpad movement from stealing horn aim and prevents accidental gameplay clicks from triggering Snap. Arrow Keys and Space remain active. Menu clicks remain active so pointer gameplay can always be switched back on.
 
-The pointer setting persists through localStorage when available and fails safely when storage is unavailable.
+Mouse, Music and SFX preferences persist through localStorage when available and fail safely when storage is unavailable.
 
 ## What to playtest
 
@@ -60,7 +60,7 @@ The most useful final checks are not only "can I beat it?" Pay attention to:
 - whether Hard/Impossible stop rewarding last-enemy pickup farming,
 - whether Style / Best / Time / Hearts make the result screen motivating rather than confusing,
 - whether every boxed menu action feels obvious and returns to the expected screen,
-- whether the mouse toggle solves accidental laptop touchpad input without making the menus awkward.
+- whether the mouse toggle solves accidental laptop touchpad input without making the menus awkward, and whether Music/SFX can be muted independently.
 
 ## Current qualified artifact
 
@@ -73,9 +73,9 @@ Versioned twin:
 **[`dist/stretchicorn-desktop-v0.39.0.zip`](dist/stretchicorn-desktop-v0.39.0.zip)**
 
 ```text
-13,312 / 13,312 bytes
-0 bytes free
-SHA-256 71e64ddfedfb25a8e30db9f8886b25a4cd27255b81277ddf83e0c6c77e28ac12
+13,304 / 13,312 bytes
+8 bytes free
+SHA-256 b88f8b1429b6f53330f9fb871760caf1acca2e5fafe2a8251f517feea7df0405
 ```
 
 The stable and versioned ZIPs are byte-identical and each contains exactly one root-level `index.html`.

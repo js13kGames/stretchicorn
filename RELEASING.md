@@ -8,9 +8,9 @@ Stretchicorn treats the competition ZIP as a reproducible release artifact, not 
 version: 0.39.0
 dist/stretchicorn-js13k.zip
 dist/stretchicorn-desktop-v0.39.0.zip
-13,312 / 13,312 bytes
-0 bytes free
-SHA-256 71e64ddfedfb25a8e30db9f8886b25a4cd27255b81277ddf83e0c6c77e28ac12
+13,304 / 13,312 bytes
+8 bytes free
+SHA-256 b88f8b1429b6f53330f9fb871760caf1acca2e5fafe2a8251f517feea7df0405
 ```
 
 The stable and versioned ZIPs are byte-identical.
@@ -68,11 +68,12 @@ The readable repository can therefore retain historical context in versioned sou
 
 The suite currently includes:
 
-- final legacy-settings / input-authority / deterministic soak audit,
+- independent Music/SFX/Mouse persistence + legacy-settings migration,
+- final input-authority / deterministic soak audit,
 - explicit boxed menu hitboxes and pointer OFF/ON behavior,
 - title/pause/Guide/Controls/Game Over/result click authority,
 - Guide **G** shortcut and exact return-to-origin behavior,
-- centered Controls action geometry,
+- centered Controls action geometry with independent Music and SFX toggles,
 - number-free title difficulty cards with retired **1–4** title shortcuts,
 - boss anti-farm Style / combo / Lucky-count isolation,
 - Hard/Impossible last-enemy pickup gating and restored Impossible Lucky sustain,
@@ -132,7 +133,7 @@ Roadroller is run twice. The two packed outputs must be byte-identical or the re
 
 `scripts/check-size.mjs` prints the used/free byte count and fails above 13,312 bytes.
 
-The current candidate is exactly **13,312 / 13,312 bytes** with **0 bytes free**. Any source change should be treated as a release change and requalified from zero.
+The current candidate is exactly **13,304 / 13,312 bytes** with **8 bytes free**. Any source change should be treated as a release change and requalified from zero.
 
 ### 8. Audit release metadata and working-tree hygiene
 
@@ -179,7 +180,7 @@ For the ZIP path, CI:
 
 CI then opens the **same packed payload** as `dist/stretchicorn-local.html` directly through `file://` in the same browser and repeats the critical Controls/title/gameplay/pause path. The two browser routes therefore differ in launch environment, not game bytes.
 
-The VM suite separately verifies the complete boxed menu matrix, including Resume, Guide, Controls, Menu, Back, Retry, Replay and next-difficulty actions. This catches click-routing failures without relying only on browser smoke.
+The VM suite separately verifies the complete boxed menu matrix, including Play, Guide, Controls, Menu, Back, Retry, Replay and next-difficulty actions. This catches click-routing failures without relying only on browser smoke.
 
 ## Run the browser harness locally
 
@@ -204,7 +205,7 @@ Playwright is a developer/CI harness only and is never bundled into the submissi
 
 ## Source-change protocol
 
-Because the candidate has **0 bytes of headroom**, do not treat even tiny gameplay copy edits as harmless.
+Because the candidate has only **8 bytes of headroom**, do not treat even tiny gameplay copy edits as harmless.
 
 For any change that can alter `dist/index.html`:
 
@@ -260,7 +261,7 @@ Before uploading `dist/stretchicorn-js13k.zip`, confirm all of the following:
 - [ ] manual title → Controls → Easy → pause → Guide/Back → boss sampling → result flow still feels correct
 - [ ] no manual unzip/re-zip step has touched the submission
 
-Do not manually re-compress the archive. With **0 bytes free**, a different ZIP tool can move the candidate over the limit immediately.
+Do not manually re-compress the archive. With only **8 bytes free**, a different ZIP tool can move the candidate over the limit immediately.
 
 ## Wavedash isolation
 
